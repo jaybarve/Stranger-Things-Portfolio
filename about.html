@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About | Jay Barve</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:#0b0b0b;
+  color:#fff;
+  font-family:Arial;
+  scroll-snap-type:y mandatory;
+}
+section{
+  min-height:100vh;
+  padding:100px 12%;
+  scroll-snap-align:start;
+}
+h1,h2{color:#e50914;}
+p{line-height:1.7;max-width:900px;}
+
+.seasons{margin-top:70px;}
+.season{
+  opacity:0;
+  transform:translateY(50px);
+  transition:1s ease;
+  border-left:4px solid #00cfff;
+  padding-left:25px;
+  margin-bottom:45px;
+  position:relative;
+}
+.season.show{opacity:1;transform:none;}
+.season::before{
+  content:"";
+  position:absolute;
+  left:-40px;top:50%;
+  width:120px;height:120px;
+  transform:translateY(-50%);
+  filter:blur(60px);
+  opacity:.6;
+  z-index:-1;
+}
+.s1::before{background:#00cfff;}
+.s2::before{background:#4d8bff;}
+.s3::before{background:#6a5cff;}
+.s4::before{background:#a238ff;}
+.s5::before{background:#e50914;}
+
+.season h3{color:#00cfff;}
+.s5 h3{color:#e50914;}
+.season span{font-size:.85rem;color:#aaa;}
+.season:hover{text-shadow:1px 0 red,-1px 0 blue;}
+</style>
+</head>
+
+<body>
+
+<section>
+<h1>Who Am I?</h1>
+<p>
+I’m Jay Barve, a BCA student deeply interested in cybersecurity, cloud computing,
+and understanding how systems behave under real-world pressure.
+</p>
+<p>
+I enjoy ethical hacking, bug bounty testing, and building secure applications.
+My long-term goal is to become a Cloud Security Engineer.
+</p>
+
+<div class="seasons">
+<h2>My Journey — The Seasons</h2>
+
+<div class="season s1"><h3>Season 1</h3><span>The Beginning</span>
+<p>Started BCA and learned programming fundamentals.</p></div>
+
+<div class="season s2"><h3>Season 2</h3><span>Skill Growth</span>
+<p>Focused on Java, web development, and logic building.</p></div>
+
+<div class="season s3"><h3>Season 3</h3><span>Real Exposure</span>
+<p>Entered bug bounty and beta testing.</p></div>
+
+<div class="season s4"><h3>Season 4</h3><span>Specialization</span>
+<p>Diving deep into cloud, IAM, and security.</p></div>
+
+<div class="season s5"><h3>Season 5</h3><span>The Goal</span>
+<p>Becoming a Cloud Security Engineer.</p></div>
+</div>
+</section>
+
+<audio id="seasonSound">
+<source src="https://assets.mixkit.co/sfx/preview/mixkit-electronic-retro-hit-2643.mp3">
+</audio>
+
+<script>
+const seasons=document.querySelectorAll('.season');
+const sound=document.getElementById('seasonSound');
+const played=new Set();
+
+function reveal(){
+ seasons.forEach((s,i)=>{
+  if(s.getBoundingClientRect().top<window.innerHeight*.85 && !played.has(i)){
+    s.classList.add('show');
+    sound.currentTime=0; sound.play();
+    played.add(i);
+  }
+ });
+}
+window.addEventListener('scroll',reveal);
+window.addEventListener('load',reveal);
+
+/* Konami Easter Egg */
+const code=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+let input=[];
+window.addEventListener("keydown",e=>{
+ input.push(e.key);
+ input.splice(-code.length-1,input.length-code.length);
+ if(input.join("")===code.join("")){
+   document.body.classList.toggle("upside");
+   alert("🧇 Upside Down unlocked");
+ }
+});
+</script>
+
+</body>
+</html>
