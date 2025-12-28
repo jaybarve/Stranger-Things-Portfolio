@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jay Barve | Hawkins Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.cdnfonts.com/css/benguiat" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#0b0b0b;
+  color:#fff;
+  font-family:Arial, sans-serif;
+  overflow-x:hidden;
+}
+canvas{position:fixed;inset:0;z-index:-1;}
+nav{
+  position:fixed;top:0;width:100%;
+  padding:15px 8%;
+  background:rgba(0,0,0,.6);
+  display:flex;justify-content:space-between;
+  z-index:10;
+}
+nav a{
+  color:#00cfff;text-decoration:none;margin-left:20px;
+}
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+}
+.hero h1{
+  font-family:'Benguiat',serif;
+  font-size:4rem;
+  color:#e50914;
+  text-shadow:0 0 30px red;
+}
+.hero p{color:#00cfff;letter-spacing:2px;margin-top:10px;}
+.cursor{
+  position:fixed;width:18px;height:18px;
+  border:2px solid #00cfff;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:999;
+}
+</style>
+</head>
+
+<body>
+<canvas id="particles"></canvas>
+<div class="cursor"></div>
+
+<nav>
+  <strong>HAWKINS</strong>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>JAY BARVE</h1>
+  <p>BETWEEN CODE & THE UPSIDE DOWN</p>
+</section>
+
+<script src="assets/particles.js"></script>
+<script src="assets/cursor.js"></script>
+</body>
+</html>
