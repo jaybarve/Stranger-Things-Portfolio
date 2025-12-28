@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Jay Barve | Stranger Portfolio</title>
+<title>Jay Barve | Hawkins Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.cdnfonts.com/css/benguiat" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+
 body{
   background:#0b0b0b;
   color:#fff;
@@ -28,7 +29,7 @@ nav{
   top:0;
   width:100%;
   padding:15px 8%;
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,.7);
   backdrop-filter:blur(6px);
   display:flex;
   justify-content:space-between;
@@ -39,7 +40,6 @@ nav a{
   color:#00cfff;
   text-decoration:none;
   margin-left:20px;
-  font-weight:500;
 }
 
 /* CURSOR */
@@ -54,19 +54,17 @@ nav a{
   z-index:20;
 }
 
-/* CONTENT */
-section{
+/* HERO */
+.hero{
   min-height:100vh;
+  padding-top:100px;
   display:flex;
-  justify-content:center;
-  align-items:center;
   flex-direction:column;
+  align-items:center;
   text-align:center;
   position:relative;
   z-index:2;
-  padding-top:80px;
 }
-
 .hero h1{
   font-family:'Benguiat',serif;
   font-size:4rem;
@@ -74,9 +72,54 @@ section{
   text-shadow:0 0 30px red;
 }
 .hero p{
-  margin-top:12px;
+  margin-top:10px;
   color:#00cfff;
   letter-spacing:2px;
+}
+
+/* SOUND BUTTON */
+.sound-btn{
+  margin-top:25px;
+  padding:12px 28px;
+  border:2px solid #00cfff;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+}
+.sound-btn.active{
+  background:#00cfff;
+  color:#000;
+  box-shadow:0 0 20px #00cfff;
+}
+
+/* GALLERY */
+.gallery{
+  margin-top:80px;
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  padding:0 8%;
+}
+.card{
+  height:180px;
+  border-radius:8px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.4s ease;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.4);
+}
+.card:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 30px rgba(229,9,20,.9);
 }
 
 /* MOBILE */
@@ -104,9 +147,43 @@ section{
 <section class="hero">
   <h1>JAY BARVE</h1>
   <p>BETWEEN CODE & THE UPSIDE DOWN</p>
+
+  <!-- SOUND CONTROL -->
+  <button class="sound-btn" id="soundBtn">Play Atmosphere</button>
+
+  <!-- IMAGE GALLERY -->
+  <div class="gallery">
+    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1535223289827-42f1e9919769')"></div>
+    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')"></div>
+    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba')"></div>
+    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1517816428104-797678c7cf0b')"></div>
+  </div>
 </section>
+
+<!-- BACKGROUND SOUND -->
+<audio id="bgSound" loop>
+  <source src="https://assets.mixkit.co/music/preview/mixkit-dark-synth-wave-234.mp3">
+</audio>
 
 <script src="assets/particles.js"></script>
 <script src="assets/cursor.js"></script>
+
+<script>
+/* SOUND TOGGLE */
+const btn=document.getElementById("soundBtn");
+const sound=document.getElementById("bgSound");
+btn.onclick=()=>{
+  if(sound.paused){
+    sound.play();
+    btn.classList.add("active");
+    btn.textContent="Pause Atmosphere";
+  }else{
+    sound.pause();
+    btn.classList.remove("active");
+    btn.textContent="Play Atmosphere";
+  }
+};
+</script>
+
 </body>
 </html>
