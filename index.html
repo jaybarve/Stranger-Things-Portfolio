@@ -2,54 +2,92 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Jay Barve | Hawkins Portal</title>
+<title>Jay Barve | Stranger Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.cdnfonts.com/css/benguiat" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-  margin:0;
   background:#0b0b0b;
   color:#fff;
   font-family:Arial, sans-serif;
   overflow-x:hidden;
 }
-canvas{position:fixed;inset:0;z-index:-1;}
+
+/* PARTICLES */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
+
+/* NAVBAR */
 nav{
-  position:fixed;top:0;width:100%;
+  position:fixed;
+  top:0;
+  width:100%;
   padding:15px 8%;
-  background:rgba(0,0,0,.6);
-  display:flex;justify-content:space-between;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(6px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   z-index:10;
 }
 nav a{
-  color:#00cfff;text-decoration:none;margin-left:20px;
+  color:#00cfff;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:500;
 }
-.hero{
+
+/* CURSOR */
+.cursor{
+  position:fixed;
+  width:18px;
+  height:18px;
+  border:2px solid #00cfff;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:20;
+}
+
+/* CONTENT */
+section{
   min-height:100vh;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
   text-align:center;
+  position:relative;
+  z-index:2;
+  padding-top:80px;
 }
+
 .hero h1{
   font-family:'Benguiat',serif;
   font-size:4rem;
   color:#e50914;
   text-shadow:0 0 30px red;
 }
-.hero p{color:#00cfff;letter-spacing:2px;margin-top:10px;}
-.cursor{
-  position:fixed;width:18px;height:18px;
-  border:2px solid #00cfff;
-  border-radius:50%;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  z-index:999;
+.hero p{
+  margin-top:12px;
+  color:#00cfff;
+  letter-spacing:2px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:2.5rem;}
 }
 </style>
 </head>
 
 <body>
+
 <canvas id="particles"></canvas>
 <div class="cursor"></div>
 
